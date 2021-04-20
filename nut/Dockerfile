@@ -7,6 +7,7 @@ FROM ${BUILD_FROM}
 RUN \
     apt-get update \
     && apt-get install -y \
+	make \
         openssl \
         python \
         autoconf \
@@ -22,6 +23,7 @@ RUN \
     #&& git checkout ever_hid_ups \
     && ./autogen.sh \
     && ./configure \
+            --disable-dependency-tracking \
             --prefix=/usr \
             --libexecdir=/usr/lib/nut \
             --without-wrap \
@@ -44,7 +46,6 @@ RUN \
             --with-statepath=/var/run/nut \
             --with-altpidpath=/var/run/nut \
     && make install \
-    && apk del --no-cache --purge .build-dependencies \
     && rm -f -r \
         /tmp/* \
         /etc/nut/*.apk-new

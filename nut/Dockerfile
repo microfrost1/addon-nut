@@ -13,6 +13,7 @@ RUN \
         automake \
         libtool \
         libusb-dev \
+        libneon27-dev \
         git \        
     && git clone https://github.com/networkupstools/nut.git /tmp/nut \
     && cd /tmp/nut \

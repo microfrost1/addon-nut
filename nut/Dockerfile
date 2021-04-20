@@ -5,7 +5,7 @@ FROM ${BUILD_FROM}
 # Setup base
 # hadolint ignore=DL3003
 RUN \
-    apk add --no-cache \
+    apt-get install --no-cache \
         hwids \
         libtool \
         libusb-compat \
@@ -14,7 +14,7 @@ RUN \
         openssl \
         usbutils \
         git \
-    && apk add --no-cache --virtual .build-dependencies \
+    apt-get install --no-cache --virtual .build-dependencies \
         autoconf \
         automake \
         build-base \

@@ -13,6 +13,7 @@ RUN \
         automake \
         libtool \
         libusb-1.0-0 \
+        libusb-1.0-0-dev \
         git \        
     && git clone https://github.com/networkupstools/nut.git /tmp/nut \
     && cd /tmp/nut \

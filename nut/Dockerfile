@@ -5,13 +5,55 @@ FROM ${BUILD_FROM}
 # Setup base
 # hadolint ignore=DL3003
 RUN \
-    apt-get update \
-    && apt-get install -y --no-install-recommends\
-        nut=2.7.4-8 \
-        nut-snmp=2.7.4-8 \
-        usbutils=1:010-3 \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    apk add --no-cache \
+        hwids \
+        libtool \
+        libusb-compat \
+        neon \
+        net-snmp-libs \
+        openssl \
+        usbutils \
+        git \
+    && apk add --no-cache --virtual .build-dependencies \
+        autoconf \
+        automake \
+        build-base \
+        libusb-compat-dev \
+        neon-dev \
+        net-snmp-dev \
+        python \
+    && git clone https://github.com/networkupstools/nut.git /tmp/nut \
+    && cd /tmp/nut \
+    #&& git checkout ever_hid_ups \
+    && ./autogen.sh \
+    && ./configure \
+            --prefix=/usr \
+            --libexecdir=/usr/lib/nut \
+            --without-wrap \
+            --with-user=root \
+            --with-group=root \
+            --disable-static \
+            --with-serial \
+            --with-usb \
+            --without-avahi \
+            --with-snmp \
+            --with-neon \
+            --without-powerman \
+            --without-ipmi \
+            --without-freeipmi \
+            --with-libltdl \
+            --without-cgi \
+            --with-drvpath=/usr/lib/nut \
+            --datadir=/usr/share/nut \
+            --sysconfdir=/etc/nut \
+            --with-statepath=/var/run/nut \
+            --with-altpidpath=/var/run/nut \
+    && make install \
+    && apk del --no-cache --purge .build-dependencies \
+    && rm -f -r \
+        /tmp/* \
+        /etc/nut/*.apk-new
+
 # Copy root filesystem
 COPY rootfs /
 

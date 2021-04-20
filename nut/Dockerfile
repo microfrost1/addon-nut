@@ -6,22 +6,7 @@ FROM ${BUILD_FROM}
 # hadolint ignore=DL3003
 RUN \
     apt-get install \
-        hwids \
-        libtool \
-        libusb-compat \
-        neon \
-        net-snmp-libs \
         openssl \
-        usbutils \
-        git \
-    apt-get install \
-        autoconf \
-        automake \
-        build-base \
-        libusb-compat-dev \
-        neon-dev \
-        net-snmp-dev \
-        python \
     && git clone https://github.com/networkupstools/nut.git /tmp/nut \
     && cd /tmp/nut \
     #&& git checkout ever_hid_ups \

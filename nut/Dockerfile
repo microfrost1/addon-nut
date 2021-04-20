@@ -12,7 +12,7 @@ RUN \
         autoconf \
         automake \
         libtool \
-        libusb \
+        libusb-1.0-0 \
         git \        
     && git clone https://github.com/networkupstools/nut.git /tmp/nut \
     && cd /tmp/nut \

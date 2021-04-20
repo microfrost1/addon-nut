@@ -12,9 +12,6 @@ RUN \
         autoconf \
         automake \
         libtool \
-        build-base \
-        libusb-compat \
-        libusb-compat-dv \
         git \
     && apk add --no-cache --virtual .build-dependencies \
         autoconf=2.69-r2 \

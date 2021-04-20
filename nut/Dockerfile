@@ -6,7 +6,7 @@ FROM ${BUILD_FROM}
 # hadolint ignore=DL3003
 RUN \
     apt-get update \
-    && apt-get install \
+    && apt-get install -y \
         openssl \
         git \
     && git clone https://github.com/networkupstools/nut.git /tmp/nut \

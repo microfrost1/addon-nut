@@ -8,7 +8,23 @@ RUN \
     apt-get update \
     && apt-get install -y \
         openssl \
+        python \
+        autoconf \
+        automake \
+        libtool \
+        build-base \
+        libusb-compat \
+        libusb-compat-dv \
         git \
+    && apk add --no-cache --virtual .build-dependencies \
+        autoconf=2.69-r2 \
+        automake=1.16.2-r0 \
+        build-base=0.5-r2 \
+        libusb-compat-dev=0.1.5-r4 \
+        neon-dev=0.31.1-r0 \
+        net-snmp-dev=5.8-r3 \
+        python2 \
+        
     && git clone https://github.com/networkupstools/nut.git /tmp/nut \
     && cd /tmp/nut \
     #&& git checkout ever_hid_ups \

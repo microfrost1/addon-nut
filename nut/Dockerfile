@@ -15,6 +15,7 @@ RUN \
         libusb-dev \
         libneon27-dev \
         snmpd \
+        libsnmp-dev \
         git \        
     && git clone https://github.com/networkupstools/nut.git /tmp/nut \
     && cd /tmp/nut \

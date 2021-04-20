@@ -7,6 +7,7 @@ FROM ${BUILD_FROM}
 RUN \
     apt-get install \
         openssl \
+        git \
     && git clone https://github.com/networkupstools/nut.git /tmp/nut \
     && cd /tmp/nut \
     #&& git checkout ever_hid_ups \

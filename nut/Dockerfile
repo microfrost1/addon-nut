@@ -5,7 +5,7 @@ FROM ${BUILD_FROM}
 # Setup base
 # hadolint ignore=DL3003
 RUN \
-    apt-get install --no-cache \
+    apt-get install \
         hwids \
         libtool \
         libusb-compat \
@@ -14,7 +14,7 @@ RUN \
         openssl \
         usbutils \
         git \
-    apt-get install --no-cache --virtual .build-dependencies \
+    apt-get install \
         autoconf \
         automake \
         build-base \
